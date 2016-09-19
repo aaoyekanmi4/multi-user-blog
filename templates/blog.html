@@ -10,9 +10,9 @@
     <span><a class ="logged-who" href={{"/blog/%s/edit" % blogpost.key().id()}}>{{edit}}</a></span>
     {% endif %}
 
-     <span class="blogpost-date">
+    <span class="blogpost-date">
       {{blogpost.created.strftime("%b %d, %Y")}}
-     </span>
+    </span>
 
   </div>
 
@@ -26,7 +26,8 @@
 
   <br>
 
-  <a class="comment-link" href={{"/blog/%s" % blogpost.key().id()}}>View Comments
+  <a class="comment-link" href={{"/blog/%s" % blogpost.key().id()}}>
+    View Comments
   </a>
 
   <br>
