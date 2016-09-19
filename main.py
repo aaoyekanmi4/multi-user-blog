@@ -254,7 +254,7 @@ class NewPost(Handler):
             self.render("new_post.html", **params)
 
         else:
-            self.redirect('/blog')
+            self.redirect('/login')
 
     def post(self):
         self.title = self.request.get("title")
@@ -390,7 +390,7 @@ class EditComment(Handler):
             self.render("editcomment.html", **params)
 
         else:
-            self.redirect('/blog')
+            self.redirect('/login')
 
 
     def post(self, post_id, c_id):
@@ -429,14 +429,16 @@ class Editpost(Handler):
         params = dict(this_user = self.this_user,
                   p = self.p)
 
+        if self.this_user:
+            if self.p and self.this_user == self.p.author:
+                params.update(loggedin_params)
+                self.render("edit.html", **params)
 
-        if self.p and self.this_user == self.p.author:
-            params.update(loggedin_params)
-            self.render("edit.html", **params)
-
+            else:
+                self.error(404)
+                return
         else:
-            self.error(404)
-            return
+            self.redirect('/login')
 
 
     def post(self, post_id):
@@ -464,16 +466,19 @@ class Editpost(Handler):
 class DeletePost(Handler):
 
     def get(self, post_id):
-
+        self.this_user = self.get_user()
         self.p = BlogInfo.get_by_id(int(post_id))
-        if self.p:
-            self.title = self.p.title
-            self.p.delete()
+        if self.this_user:
+            if self.p:
+                self.title = self.p.title
+                self.p.delete()
 
-            self.render("deleted.html", title = self.title)
+                self.render("deleted.html", title = self.title)
+            else:
+                self.error(404)
+                return
         else:
-            self.error(404)
-            return
+            self.redirect('/login')
 
 
 
@@ -483,12 +488,16 @@ class DeleteComment(Handler):
 
         self.p = BlogInfo.get_by_id(int(post_id))
         self.comment_to_edit = Comment.get_by_id(int(c_id), parent=self.p)
-        if self.comment_to_edit:
-            self.comment_to_edit.delete()
-            self.redirect("/blog/%s" % post_id)
+        self.this_user = self.get_user()
+        if self.this_user:
+            if self.comment_to_edit:
+                self.comment_to_edit.delete()
+                self.redirect("/blog/%s" % post_id)
+            else:
+                self.error(404)
+                return
         else:
-            self.error(404)
-            return
+            self.redirect('/login')
 
 
 # Controls likes and dislikes
