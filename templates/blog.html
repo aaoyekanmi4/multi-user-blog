@@ -10,8 +10,10 @@
     <span><a class ="logged-who" href={{"/blog/%s/edit" % blogpost.key().id()}}>{{edit}}</a></span>
     {% endif %}
 
-    <span class="blogpost-date">{{blogpost.created.strftime("%b%d,%Y")}}
-    </span>
+     <span class="blogpost-date">
+      {{blogpost.created.strftime("%b %d, %Y")}}
+     </span>
+
   </div>
 
   <hr>

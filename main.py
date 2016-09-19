@@ -91,7 +91,7 @@ class BlogInfo(db.Model):
 
 class Likes(db.Model):
     associated_post = db.IntegerProperty(required = True)
-    who_rated = db.StringListProperty
+    who_rated = db.StringListProperty(required= True)
     likes_value = db.IntegerProperty(required = True)
     dislikes_value = db.IntegerProperty(required = True)
 
@@ -506,13 +506,17 @@ class RatePost(Handler):
                        like_status = self.like_status,
                        post_comments = self.post_comments)
 
+        if self.this_user in self.like_status.who_rated:
+            params["like_error"] = "You've already rated this post"
+            params.update(loggedin_params)
+            self.render("permalink.html", **params)
 
-        if self.this_user and self.p.author != self.this_user:
+        elif self.this_user and self.p.author != self.this_user:
 
             is_liked = int(is_liked)
             if is_liked == 0:
                 self.like_status.likes_value += 1
-                self.like_status.who_rated = self.this_user
+                self.like_status.who_rated += [self.this_user]
 
                 self.like_status.put()
 
@@ -520,7 +524,7 @@ class RatePost(Handler):
                 self.redirect("/blog/%s" % post_id)
             else:
                 self.like_status.dislikes_value += 1
-                self.like_status.who_rated = self.this_user
+                self.like_status.who_rated += [self.this_user]
                 self.like_status.put()
 
                 self.redirect("/blog/%s" % post_id)
