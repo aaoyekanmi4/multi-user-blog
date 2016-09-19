@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form method = "post">
+
+  <div class="blogpost-title">{{p.title}}
+
+  {% if this_user == p.author %}
+
+    <span>
+
+      <a class ="logged-who" href={{'/blog/%s/edit' % p.key().id()}}>{{edit}}</a>
+
+    </span>
+
+ {% endif %}
+
+    <span class="blogpost-date">{{p.created.strftime("%b %d, %Y")}}</span>
+
+  </div>
+
+  <hr>
+
+  <br>
+
+  <pre class="blogpost-body">{{p.content}}</pre>
+
+  <br>
+
+  <div class= "ratings">
+
+    <a class="like" href={{'/rate/%s/%s' % (p.key().id(), 0)}}>
+
+      <span class="fa fa-thumbs-o-up" aria-hidden="true"></span>
+
+    </a>
+
+     {{like_status.likes_value}}
+
+    <a class="dislike" href={{'/rate/%s/%s' % (p.key().id(), 1)}}>
+
+      <span class="fa fa-thumbs-o-down" aria-hidden="true"></span>
+
+    </a>
+
+      {{like_status.dislikes_value}}
+
+  </div>
+
+  <br>
+
+  <div class = error>
+    {{cant_like}}{{like_error}}
+  </div>
+
+  <br>
+
+  <h3>Leave a Comment</h3>
+
+  <textarea class="comment-box" name="comment"></textarea>
+
+  <br>
+
+  <div class="error">
+    {{no_comment}}{{cant_comment}}
+  </div>
+
+  <br>
+  <br>
+
+  <input type="submit">
+  <a href={{"/blog/%s" % p.key().id()}}>Cancel</a>
+  <br>
+  <br>
+  {% for comment in post_comments %}
+
+  {% if this_user == comment.comment_author%}
+  <a href={{"/editcomments/%s/%s" % (comment.associated_post, comment.key().id())}}>
+    Edit
+  </a>
+  {% endif %}
+
+  <div class= comment-header>
+    Comment by {{comment.comment_author}}
+  </div>
+
+  <div class= comment-time>
+    {{comment.comment_time.strftime("%b%d,%Y%I:%M%p")}}
+  </div>
+
+  <br>
+  <div class = "comment">{{comment.comment_text}}</div>
+  <br>
+
+
+  {% endfor %}
+
+
+</form>
+{% endblock %}

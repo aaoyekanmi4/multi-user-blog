@@ -1,0 +1,367 @@
+
+
+/* fontawesome */
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+
+/*welcome.html css */
+
+/* fullsize bg from https://css-tricks.com/perfect-full-page-background-image */
+#welcome-image {
+  background: url(/images/best-books-book-youll-ever-read-800.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.welcome {
+  margin: 0;
+  padding: 0;
+}
+
+
+.welcome-text {
+  color: white;
+}
+
+a.welcome-text
+a.welcome-text:visited {
+  text-decoration: none;
+  color: white;
+}
+
+#welcome-greeting {
+  font-size:30px;
+  padding-left: 50px;
+}
+
+#the,
+#welcome-title,
+#word-blog {
+  font-size: 20px;
+
+}
+
+#word-blog {
+  padding-left: 350px;
+}
+
+/* signup css */
+
+.signup-background {
+  background: url(/images/signupbw-800.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.signup-title {
+  text-align: center;
+  padding-top: 10px;
+}
+
+.signup-area {
+  background-color:  #ebebe0;
+  margin-top: 50px;
+  border-style: outset;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+#signup-submit {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.signup-form {
+  text-align: center;
+}
+
+.signup-error {
+  color: red;
+}
+
+a.signup-login-link:visited {
+  color: blue;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+/* login */
+
+.login-area {
+  width: 254.667px;
+  height: 226.875px;
+  float: right;
+  margin-right: 100px;
+
+}
+
+
+.login-section {
+  color: white;
+  font-size: 25px;
+}
+
+.login-title {
+  color: white;
+  font-size: 40px;
+}
+
+
+.link-group {
+  margin-left: 60px;
+}
+
+.login-submit {
+  margin-left: 194px;
+}
+
+.login-background {
+  background: url(/images/open-book-800.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.login-errors {
+    color: red;
+}
+
+/* blog css */
+
+#blog-background {
+  background: url(/images/large-library-books-150549-1000.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+
+.blog-container {
+  width: 700px;
+  background-color: white;
+  margin: 50px auto 0px auto;
+  min-height:800px;
+}
+
+/* pre text-wrap from https://css-tricks.com/snippets/css/make-pre-text-wrap */
+pre {
+  font-family: sans-serif;
+  font: monospace;
+  white-space: pre-wrap;       /* Since CSS 2.1 */
+  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+.blogpost-date {
+  float: right;
+  color: Gray;
+  font-size: 16px;
+}
+
+header {
+  padding: 0px;
+}
+
+.posts-section {
+  padding: 20px;
+  font-color: black;
+}
+
+
+a.main-title,
+a.main-title:visited {
+  color: black;
+  text-decoration: none;
+}
+
+.main-title {
+  color: black;
+  text-align: center;
+  text-decoration:none;
+  font-size:40px;
+}
+
+a.logged-out:visited,
+a.logged-in:visited,
+a.comment-link:visited {
+  color: blue;
+  text-decoration: none;
+  float: right;
+}
+
+a.logged-out,
+a.logged-in {
+  text-decoration: none;
+ float: right;
+}
+
+.logged-as,
+.logged-in,
+.logged-out {
+  padding-right:5px;
+}
+
+.comment-link {
+  font-size: 14px;
+  text-decoration: none;
+}
+
+a.logged-who,
+a.logged-who:visited {
+  color: blue;
+  text-decoration: none;
+}
+
+#right-hand {
+  text-decoration: none;
+}
+
+.like {
+  font-size: 20px;
+  cursor: pointer;
+  color: green;
+  text-decoration:none;
+}
+
+
+.dislike {
+  font-size: 20px;
+  cursor: pointer;
+  color: red;
+  text-decoration:none;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+/* delete */
+.deleted-background {
+  background: url(/images/giphy.gif) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.deleted-text {
+  color: white;
+  font-size: 20px;
+  margin-top: 150px;
+  text-align: center;
+}
+
+textarea {
+  font-family: Arial;
+  font-size: 17px;
+
+}
+
+.back {
+  clear: both;
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+a.back ,
+a.back:visited {
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* edit, new, editcomment */
+.comment-box{
+  width: 400px;
+  height:100px;
+}
+
+.blog-contentbox {
+  width: 554px;
+  height: 250px;
+}
+
+.blog-titlebox {
+  width: 200px;
+  height: 30px;
+}
+
+.error{
+  color: red;
+}
+
+hr.title-line {
+  margin: 0px auto 30px auto;
+  border-color: black;
+}
+
+input[type=text],
+input[type=password] {
+  font-size: 18px;
+}
+
+p {
+  margin: 0;
+}
+
+.blogpost-title {
+    font-weight:bold;
+    font-size: 20px;
+}
+
+
+.blogpost-body {
+    margin:0;
+    font-size: 17px;
+    width: 560px;
+}
+
+@media screen and (max-width: 800px) {
+
+.blog-container,
+.blogpost-body,
+.blog-contentbox,
+.comment-box,
+.blog-titlebox {
+width: 100%
+}
+
+body {
+font-size: 18px;
+}
+
+input[type=text],
+input[type=password] {
+font-size: 18px;
+}
+
+#word-blog {
+padding-left: 0px
+}
+
+}
+
+@media screen and (max-width: 750px) {
+.login-background{
+
+background: black;
+}
+
+.login-area{
+float: left;
+}
+
+.login-input{
+width: 100%;
+}
+}

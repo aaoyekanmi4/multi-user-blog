@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    <title>Books Blog</title>
+    <link rel="stylesheet" href="\css\style.css" >
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://use.fontawesome.com/6791ba42d9.js"></script>
+
+  </head>
+
+  <body id="blog-background">
+
+    <div class="blog-container">
+      <header>
+        <br>
+        <a class="logged-in" href ="/logout">{{logout}}</a>
+        <a class ="logged-out" href ="/login">{{login}}</a>
+        <a class = "logged-out"href ="/signup">{{signup}}</a>
+        <br>
+        <a class ="logged-in"  href="/blog/newpost">{{create}}</a>
+        <h1 class= "main-title"><a href="/blog" class="main-title">Books I Meant to Read</a></h1>
+        {% if this_user%}
+        <div class="logged-as">{{logged_in_as}}<a href="/welcome" class ="logged-who"> {{this_user}}</a></div>
+        {% endif %}
+      </header>
+
+      <hr class="title-line">
+
+      <section class="posts-section">
+        {% block content %}
+        {% endblock %}
+      </section>
+    </div>
+  </body>
+</html>
+

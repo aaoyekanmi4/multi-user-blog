@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Edit Comment</h1>
+
+<form method = "post">
+
+  {% if this_user == comment_to_edit.comment_author %}
+  {% if comment_to_edit %}
+  <div class="comment-author">
+    Comment by {{comment_to_edit.comment_author}}
+  </div>
+
+  <hr>
+  <br>
+
+  <textarea class="comment-box" name ="comment">
+    {{comment_to_edit.comment_text}}
+  </textarea>
+
+  <br>
+
+  <input type="submit">
+
+  <div class="error">
+    {{error}}
+  </div>
+
+  <br>
+
+  <a href={{"/delcomment/%s/%s" % (comment_to_edit.associated_post,comment_to_edit.key().id())}}
+  onclick="return confirm('Are you sure you want to delete this item?');">Delete Comment
+  </a>
+
+  {% endif %}
+  {% endif %}
+
+  <br>
+  <br>
+
+  {% for comment in post_comments %}
+
+  <div class= comment-header>
+    Comment by {{comment.comment_author}}
+  </div>
+
+  <div class= comment-time>
+    {{comment.comment_time}}
+  </div>
+
+  <br>
+
+  <div class = "comment">
+    {{comment.comment_text}}
+  </div>
+
+  <br>
+
+
+  {% endfor %}
+
+</form>
+{% endblock %}

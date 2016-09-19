@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html class="signup-background">
+  <head> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel ="stylesheet" href="\css\style.css">
+  </head>
+  
+  <body >
+    
+    <form method="post">
+      <div class="signup-form">
+      
+        <div class= "signup-area">
+      
+          <div class= "signup-title"><h1>Sign up</h1></div>
+      
+          <table>
+        
+            <tr>         
+              <td>
+                <label>
+                  Username:
+                </label>
+              </td>           
+              <td>
+                <input type="text" name="username" value="{{username}}">             
+              </td>         
+            </tr>         
+            <tr>       
+              <td>
+                <label>
+                  Password:
+                </label>  
+              </td>          
+              <td>
+                <input type="password" name="password">          
+              </td>      
+            </tr>
+            <tr>         
+              <td>
+                <label>
+                  Verify Password:
+                </label>
+              </td>         
+              <td>
+                <input type="password" name="verify">            
+              </td>
+            </tr>
+            <tr>   
+              <td>
+                <label>
+                Email (Optional):
+                </label>
+              </td>          
+              <td>
+                <input type="text" name="email" value="{{email}}">            
+              </td>         
+            </tr>
+          
+          </table>    
+        
+          <div class="signup-error">{{username_error}}{{username_used}}</div>           
+          <div class="signup-error">{{password_error}}</div>     
+          <div class="signup-error">{{verify_error}}</div>
+          <div class="signup-error">{{email_error}}</div>    
+        
+          <br>
+          <br>
+        
+          <div id="signup-submit">
+            <input type="submit">
+          </div>
+        
+          <div class="signup-login-link">
+            <a href="/login" class="signup-login-link">Already a user? Click here to login</a>
+          </div>
+        
+        </div>
+        <br>
+        <br>
+      
+        <div class="back">   
+      
+          <a class="back" href="/blog">To "Books I Meant to Read" Blog
+            <span id ="right-hand" class="fontawesome-hand-right"></span>
+          </a>
+        
+        </div>
+      </div>
+    </form>
+  </body>       
+</html>
