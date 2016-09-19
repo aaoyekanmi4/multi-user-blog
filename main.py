@@ -310,7 +310,7 @@ class MainPage (Handler):
             params.update(loggedout_params)
             self.render("blog.html", **params)
 
-
+# Unique page for each post
 class Permalink(Handler):
 
     def get(self, post_id):
@@ -491,7 +491,7 @@ class DeleteComment(Handler):
             return
 
 
-
+# Controls likes and dislikes
 class RatePost(Handler):
     def get(self, post_id, is_liked):
 
@@ -544,7 +544,7 @@ class RatePost(Handler):
 
 
 
-
+# Set cookie to nothing to logout
 class Logout(Handler):
 
     def get(self):
