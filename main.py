@@ -385,10 +385,12 @@ class EditComment(Handler):
         params = dict (comment_to_edit = self.e_comment,
             this_user = self.this_user, post_comments = self.post_comments)
 
-        if self.this_user == self.e_comment.comment_author:
-            params.update(loggedin_params)
-            self.render("editcomment.html", **params)
-
+        if self.this_user:
+            if self.e_comment and self.e_comment.comment_author == self.this_user:
+                params.update(loggedin_params)
+                self.render("editcomment.html", **params)
+            else:
+                self.redirect('/blog')
         else:
             self.redirect('/login')
 
@@ -435,8 +437,7 @@ class Editpost(Handler):
                 self.render("edit.html", **params)
 
             else:
-                self.error(404)
-                return
+                self.redirect('/blog')
         else:
             self.redirect('/login')
 
@@ -469,14 +470,12 @@ class DeletePost(Handler):
         self.this_user = self.get_user()
         self.p = BlogInfo.get_by_id(int(post_id))
         if self.this_user:
-            if self.p:
+            if self.p and self.this_user == self.p.author:
                 self.title = self.p.title
                 self.p.delete()
-
                 self.render("deleted.html", title = self.title)
             else:
-                self.error(404)
-                return
+                self.redirect('/blog')
         else:
             self.redirect('/login')
 
@@ -487,15 +486,14 @@ class DeleteComment(Handler):
     def get(self, post_id, c_id):
 
         self.p = BlogInfo.get_by_id(int(post_id))
-        self.comment_to_edit = Comment.get_by_id(int(c_id), parent=self.p)
+        self.e_comment = Comment.get_by_id(int(c_id), parent=self.p)
         self.this_user = self.get_user()
         if self.this_user:
-            if self.comment_to_edit:
-                self.comment_to_edit.delete()
+            if self.e_comment and self.e_comment.comment_author == self.this_user:
+                self.e_comment.delete()
                 self.redirect("/blog/%s" % post_id)
             else:
-                self.error(404)
-                return
+                self.redirect('/blog')
         else:
             self.redirect('/login')
 
