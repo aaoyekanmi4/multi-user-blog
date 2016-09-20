@@ -6,6 +6,7 @@ To Run:
 
 From the main page, sign-up and login are available. 
 Sign up to be able to create, edit, and delete your own posts, to post comments, and to like the posts of others.
+Click the title to get back to the main page.
 
 2) Alternatively, you could download google app engine launcher to run this app on your local machine.
 
