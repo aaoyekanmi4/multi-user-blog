@@ -3,6 +3,7 @@ import os
 import webapp2
 import re
 from google.appengine.ext import db
+from models import BlogInfo, Likes, User, Comment
 import string
 import hashlib
 import random
@@ -77,35 +78,6 @@ login_ = "login"
 
 loggedout_params = dict(signup = signup_, login = login_)
 
-
-# create kinds (like sql tables)
-class BlogInfo(db.Model):
-
-    title = db.StringProperty(required = True)
-    content = db.TextProperty(required = True)
-    created = db.DateTimeProperty(auto_now_add = True)
-    last_modified  = db.DateProperty(auto_now = True)
-    author = db.StringProperty(required = True)
-
-
-
-class Likes(db.Model):
-    associated_post = db.IntegerProperty(required = True)
-    who_rated = db.StringListProperty(required= True)
-    likes_value = db.IntegerProperty(required = True)
-    dislikes_value = db.IntegerProperty(required = True)
-
-class User(db.Model):
-    username = db.StringProperty(required = True)
-    hashed_value = db.TextProperty(required = True)
-    email = db.StringProperty
-
-
-class Comment(db.Model):
-    comment_text = db.TextProperty(required = True)
-    comment_time = db.DateTimeProperty(auto_now_add = True)
-    comment_author = db.StringProperty(required = True)
-    associated_post = db.IntegerProperty(required = True)
 
 # functions for jinja2 to display template html files
 class Handler(webapp2.RequestHandler):
