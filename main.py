@@ -543,12 +543,13 @@ class RatePost(Handler):
         elif self.p.author == self.this_user:
             params["like_error"] = "Not allowed to like and dislike own posts"
             params.update(loggedin_params)
-            self.render("permalink.html", **params)
+            self.render("rate_error.html", **params)
 
         else:
             params["cant_like"] = "Please login to like and dislike posts"
             params.update(loggedout_params)
-            self.render("permalink.html", **params)
+            self.render("rate_error.html", **params)
+
 
 
 

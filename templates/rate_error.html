@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <div class="blogpost-title">{{p.title}}
+
+  {% if this_user == p.author %}
+
+    <span>
+
+      <a class ="logged-who" href={{'/blog/%s/edit' % p.key().id()}}>{{edit}}</a>
+
+    </span>
+
+ {% endif %}
+
+    <span class="blogpost-date">{{p.created.strftime("%b %d, %Y")}}</span>
+
+  </div>
+
+  <hr>
+
+  <br>
+
+  <pre class="blogpost-body">{{p.content}}</pre>
+
+  <br>
+
+  <div class= "ratings">
+
+    <a class="like" href={{'/rate/%s/%s' % (p.key().id(), 0)}}>
+
+      <span class="fa fa-thumbs-o-up" aria-hidden="true"></span>
+
+    </a>
+
+     {{like_status.likes_value}}
+
+    <a class="dislike" href={{'/rate/%s/%s' % (p.key().id(), 1)}}>
+
+      <span class="fa fa-thumbs-o-down" aria-hidden="true"></span>
+
+    </a>
+
+      {{like_status.dislikes_value}}
+
+  </div>
+
+  <br>
+
+  <div class = error>
+    {{cant_like}}{{like_error}}
+  </div>
+ <a href={{"/blog/%s" % p.key().id()}}>Go Back</a>
+  <br>
+{% endblock %}
