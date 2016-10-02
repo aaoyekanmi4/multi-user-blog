@@ -7,7 +7,7 @@
   </head>
   <body>
     <form method="post">
-       
+
       <div class="login-area">
         <div class="login-title"><h1>Login</h1></div>
           <table>
@@ -17,7 +17,7 @@
                   Username:
                 </label>
               </td>
-          
+
               <td>
                 <input class ="login-input" type="text" name="username" value="{{username}}">
               </td>
@@ -32,36 +32,39 @@
                 <input class ="login-input" type="password" name="password" value="{{password}}">
               </td>
             </tr>
+            <tr>
+              <td>
+              </td>
+              <td class="login-submit" id = "login-submit">
+                <input id="login-submit-button" type="submit">
+              </td>
+            </tr>
           </table>
           <br>
-          
+
           <div class="login-errors">
             {{username_error}}{{username_not_found}}
           </div>
-  
+
 
           <div class="login-errors">
            {{password_error}}{{wrong_password}}
           </div>
-  
+
           <div class="login-errors">
             {{invalid_login}}
           </div>
-          
-          <div class="login-submit" id = "login-submit">
-              
-            <input type="submit">
-              
-          </div>
+
+
           <br>
           <br>
           <div class="link-group">
             <a id="link-to-signup" class="login-section" href="/signup">
               Click here to signup
             </a>
-          
+
             <div class="back">
-          
+
               <a class="back" href="/blog">
                 To "Books I Meant to Read" Blog
                 <span id ="right-hand" class="fontawesome-hand-right"></span>

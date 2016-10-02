@@ -132,6 +132,10 @@ a.signup-login-link:visited {
     color: red;
 }
 
+#login-submit-button {
+  float:right;
+}
+
 /* blog css */
 
 #blog-background {
